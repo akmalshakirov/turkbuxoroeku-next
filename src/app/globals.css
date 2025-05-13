@@ -12,3 +12,11 @@ body {
     color: var(--foreground);
     max-width: var(--width-container);
 }
+
+button {
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,120 @@
+.dropdown {
+    position: relative;
+}
+
+.dropdown ul ul {
+    position: absolute;
+}
+
+.dropdown ul {
+    transition: 0.2s ease-in-out;
+}
+
+.dropdown:not(.dropdown-active) ul ul {
+    top: -100%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dropdown ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+}
+
+.dropdown.dropdown-active ul ul {
+    top: 100%;
+    background-color: white;
+    color: #000;
+    padding: 5px;
+    border: 1px solid #00000050;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dropdown.dropdown-active ul ul li {
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+}
+
+.dropdown.dropdown-active ul ul li:hover {
+    background-color: rgba(128, 128, 128, 0.212);
+}
+
+.burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 8px;
+    min-width: 38px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    transition: 0.3s;
+}
+.burger-menu.burger-close span:first-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.burger-menu.burger-close span:nth-child(2) {
+    display: none;
+}
+.burger-menu.burger-close span:last-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.burger-menu span {
+    width: 90%;
+    min-height: 3px;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.header-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.header-popup.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.header-popup div {
+    transform: translateY(-100%);
+    transition: 0.2s;
+}
+.header-popup.active div {
+    transform: translateY(0);
+    margin-top: 92px;
+    padding: 20px;
+    background-color: white;
+}

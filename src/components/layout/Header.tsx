@@ -3,17 +3,50 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Icon from "../../../public/icon.svg";
-import Dropdown from "../../images/dropdown.png";
+import Dropdown from "../../images/dropdownicon.png";
 import Flag_EN from "../../images/flag-en.png";
 import Flag_RU from "../../images/flag-ru.png";
 import Flag_UZ from "../../images/flag-uz.png";
 import OperatorIcon from "../../images/operator.png";
 import Button from "../ui/Button";
+import Modal from "../ui/Modal";
 import "./Header.css";
 
 const Header = () => {
     const [headerActive, setHeaderActive] = React.useState(false);
     const [langActive, setLangActive] = React.useState(false);
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [formData, setFormData] = React.useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const handleInputChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log("Yuborilgan ma'lumotlar:", formData);
+
+        setIsModalOpen(false);
+
+        setFormData({ name: "", email: "", message: "" });
+    };
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <>
@@ -29,7 +62,7 @@ const Header = () => {
                     </Link>
                     <a
                         href='tel:+998997180303'
-                        className='flex gap-1.5 items-center no-underline!'>
+                        className='flex gap-1.5 items-center no-underline! group'>
                         <Image
                             src={OperatorIcon}
                             alt='Operator icon'
@@ -44,9 +77,85 @@ const Header = () => {
                         </div>
                     </a>
                     <div className='flex items-center gap-3.5'>
-                        <Button variant='primary' size='md'>
+                        <Button variant='primary' size='md' onClick={openModal}>
                             Записаться
                         </Button>
+                        <Modal
+                            isOpen={isModalOpen}
+                            onClose={() => setIsModalOpen(false)}
+                            title='Записаться'>
+                            <form
+                                onSubmit={handleSubmit}
+                                onReset={() => formData.email}>
+                                <div className='mb-4'>
+                                    <label
+                                        htmlFor='name'
+                                        className='block mb-1 font-medium'>
+                                        Ism
+                                    </label>
+                                    <input
+                                        type='text'
+                                        id='name'
+                                        name='name'
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        className='w-full px-3 py-2 border rounded-md'
+                                        required
+                                    />
+                                </div>
+
+                                <div className='mb-4'>
+                                    <label
+                                        htmlFor='email'
+                                        className='block mb-1 font-medium'>
+                                        Email
+                                    </label>
+                                    <input
+                                        type='email'
+                                        id='email'
+                                        name='email'
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        className='w-full px-3 py-2 border rounded-md'
+                                        required
+                                    />
+                                </div>
+
+                                <div className='mb-4'>
+                                    <label
+                                        htmlFor='message'
+                                        className='block mb-1 font-medium'>
+                                        Xabar
+                                    </label>
+                                    <textarea
+                                        id='message'
+                                        name='message'
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        rows={4}
+                                        className='w-full px-3 py-2 border rounded-md'
+                                        required
+                                    />
+                                </div>
+
+                                <div className='flex justify-end gap-2 text-white'>
+                                    <Button
+                                        size='sm'
+                                        type='button'
+                                        variant='primary'
+                                        onClick={() => setIsModalOpen(false)}>
+                                        Bekor qilish
+                                    </Button>
+                                    <Button
+                                        type='submit'
+                                        variant='primary'
+                                        size='sm'
+                                        className='py-3'>
+                                        Yuborish
+                                    </Button>
+                                </div>
+                            </form>
+                        </Modal>
                         <button
                             className={`dropdown ${
                                 langActive ? "dropdown-active" : ""
@@ -90,7 +199,7 @@ const Header = () => {
                             </ul>
                         </button>
                     </div>
-                    <div className='flex items-center gap-4'>
+                    <div className='flex items-center gap-4 max-md:hidden'>
                         <Link
                             href='/about'
                             className='hover:text-blue-300 transition-colors'>

@@ -49,13 +49,13 @@ const Modal = ({ isOpen, onClose, title, children }: IModalProps) => {
 
     return (
         <div
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 ${
+            className={`fixed inset-0 z-50 flex items-center justify-center overflow-auto p-10 bg-black/50 transition-opacity duration-300 ${
                 isAnimating ? "bg-black/70" : "opacity-0"
             }`}
             onClick={onClose}>
             <div
                 ref={modalRef}
-                className={`bg-white rounded-lg w-full max-w-md p-6 shadow-xl transform transition-all duration-300 text-black ${
+                className={`bg-white rounded-lg w-full max-w-[600px] p-6 shadow-xl transform transition-all duration-300 text-black ${
                     isAnimating
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 -translate-y-10"

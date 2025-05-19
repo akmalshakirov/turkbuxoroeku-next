@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
-    variant?: "primary";
+    variant?: "primary" | "white";
     size?: "sm" | "md" | "lg";
 }
 
@@ -13,10 +13,12 @@ const Button = ({
     className = "",
     ...props
 }: IButton) => {
-    const baseStyle = "font-medium rounded-[10px] outline-none";
+    const baseStyle = "rounded-[10px] outline-none max-w-max";
 
     const variantStyles = {
-        primary: "bg-[#E5006A] hover:bg-[#e5006bb6] transition-colors",
+        primary:
+            "bg-[#E5006A] hover:bg-[#e5006bb6] font-bold transition-colors",
+        white: "bg-white text-[#b62765] font-bold hover:bg-white/77 transition-colors",
     };
 
     const sizeStyles = {

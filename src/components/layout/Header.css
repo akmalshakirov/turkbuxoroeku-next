@@ -53,7 +53,6 @@
     justify-content: center;
     flex-direction: column;
     gap: 4px;
-    border: 1px solid red;
     border-radius: 50%;
     padding: 8px;
     min-width: 38px;
@@ -62,9 +61,13 @@
     height: 40px;
     outline: none;
     transition: all 0.3s;
+    background-color: #df0971;
+}
+.burger-menu:hover {
+    background-color: #e71597;
 }
 .burger-menu.burger-close:hover {
-    background-color: rgba(241, 72, 72, 0.308);
+    background-color: #df0970a4;
 }
 .burger-menu.burger-close span:first-child {
     position: absolute;
@@ -95,6 +98,13 @@
     background-color: #fff;
 }
 
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 22;
+}
 .header-popup {
     position: fixed;
     top: 0;
@@ -103,7 +113,7 @@
     height: 100vh;
     opacity: 0;
     transition: 0.4s ease;
-    z-index: 1;
+    z-index: 21;
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0.8);
 }
@@ -113,14 +123,16 @@
     pointer-events: all;
 }
 
-.header-popup div {
+.header-popup .header-popup-active {
     transform: translateY(-100%);
     transition: 0.2s;
 }
-.header-popup.active div {
-    transform: translateY(0);
+.header-popup .header-popup-active {
     margin-top: 92px;
-    padding: 20px;
+    padding: 0 65px 20px 65px;
+}
+.header-popup.active .header-popup-active {
+    transform: translateY(0);
     background-color: white;
 }
 

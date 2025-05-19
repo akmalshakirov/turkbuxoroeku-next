@@ -1,0 +1,66 @@
+.home-bg-wrapper {
+    position: relative;
+    top: -10%;
+    left: 0;
+}
+
+.home-bg-wrapper .home-bg {
+    overflow: hidden;
+}
+.home-bg-wrapper .home-bg img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: 10s scaleIn infinite forwards;
+    pointer-events: none;
+}
+
+.home-bg-second img {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+.home-bg-second > div {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+}
+
+@keyframes scaleIn {
+    from {
+        scale: 1;
+    }
+    to {
+        scale: 3;
+    }
+}
+
+.home-bg-wrapper .home-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100.6%;
+    background-color: #9436757e;
+    user-select: none;
+    pointer-events: none;
+}
+
+.home-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.home-intro h1 {
+    font-size: 32px;
+}

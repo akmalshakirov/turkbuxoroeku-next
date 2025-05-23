@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import IconBlack from "../../../public/icon-black.svg";
 import Icon from "../../../public/icon.svg";
 import Flag_EN from "../../images/flag-en.png";
@@ -21,11 +21,11 @@ interface IHeaderActive {
 }
 
 const Header = ({ isActive = false }: IHeaderActive) => {
-    const [headerActive, setHeaderActive] = React.useState(false);
-    const [langActive, setLangActive] = React.useState(false);
-    const [isModalOpen, setIsModalOpen] = React.useState(false);
-    const [scrolled, setScrolled] = React.useState(false);
-    const [formData, setFormData] = React.useState({
+    const [headerActive, setHeaderActive] = useState(false);
+    const [langActive, setLangActive] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [formData, setFormData] = useState({
         name: "",
         telnum: "",
         message: "",

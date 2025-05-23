@@ -56,7 +56,7 @@ const ImageSlider = () => {
     }, [imageGroups.length]);
 
     return (
-        <div className='relative flex w-[50vw] h-screen'>
+        <div className='relative -left-[12%] flex w-[50vw] h-screen'>
             <div
                 className='relative w-full h-full overflow-hidden'
                 style={{

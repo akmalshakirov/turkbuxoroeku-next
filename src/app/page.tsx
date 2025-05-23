@@ -36,9 +36,8 @@ const Home = () => {
     };
 
     return (
-        <div className='container home-bg-wrapper w-screen'>
-            <div className='scroll-line'></div>
-            <div className='h-screen flex items-center justify-between'>
+        <div className='home-bg-wrapper w-screen container mx-auto'>
+            <div className='h-screen flex items-center'>
                 <SlidingImages />
                 <div className='flex items-center scroll-px-10 mt-[70px]'>
                     <TotalInfoCards />

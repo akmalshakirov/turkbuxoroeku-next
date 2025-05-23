@@ -57,7 +57,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 0);
+            setScrolled(window.scrollY > 50);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -67,7 +67,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
     return (
         <>
             <header
-                className={`header transition-all duration-300 text-white ${
+                className={`header h-max transition-all duration-300 text-white ${
                     headerActive || isActive
                         ? "bg-white"
                         : "bg-transparent text-inherit"

@@ -5,6 +5,7 @@
     --foreground: #171717;
     --width-container: 1272px;
     font-family: sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {

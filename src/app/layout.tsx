@@ -1,5 +1,4 @@
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import ClientLayout from "@/components/layout/ClientLayout";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
+export default function RootLayoutd({
     children,
 }: Readonly<{
     children: React.ReactNode;
@@ -20,9 +19,7 @@ export default function RootLayout({
         <html lang='en'>
             <meta name='description' content='Турк Бухара Эку Центр' />
             <body className={`antialiased`}>
-                <Header isActive={false} />
-                <main>{children}</main>
-                <Footer />
+                <ClientLayout>{children}</ClientLayout>
             </body>
         </html>
     );

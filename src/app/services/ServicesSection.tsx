@@ -2,14 +2,10 @@ import React from "react";
 
 const ServicesSection = () => {
     return (
-        <div>
+        <div className='my-5'>
             <h1>Услуги</h1>
             <div>
-                <div>
-                    {"<img src='' alt='' />"}
-                    <h3>Nimadir</h3>
-                    <p>-kcuf</p>
-                </div>
+                <div></div>
             </div>
         </div>
     );

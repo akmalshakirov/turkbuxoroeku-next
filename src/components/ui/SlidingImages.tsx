@@ -56,12 +56,12 @@ const ImageSlider = () => {
     }, [imageGroups.length]);
 
     return (
-        <div className='relative -left-[12%] flex w-[50vw] h-screen'>
+        <div className='relative max-lg:-left-[12%] -left-[3%] flex w-[50vw] h-screen justify-between'>
             <div
                 className='relative w-full h-full overflow-hidden'
                 style={{
                     transition: "opacity 0.5s ease-in-out",
-                    opacity: isVisible ? 1 : 0,
+                    opacity: isVisible ? 1 : 1,
                 }}>
                 <Image
                     src={imageGroups[currentImageIndex][0]}

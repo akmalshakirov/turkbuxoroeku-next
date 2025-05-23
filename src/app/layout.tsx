@@ -1,7 +1,7 @@
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
     title: "Турк Бухара Эку Центр",
@@ -20,7 +20,7 @@ export default function RootLayout({
         <html lang='en'>
             <meta name='description' content='Турк Бухара Эку Центр' />
             <body className={`antialiased`}>
-                <Header />
+                <Header isActive={false} />
                 <main>{children}</main>
                 <Footer />
             </body>

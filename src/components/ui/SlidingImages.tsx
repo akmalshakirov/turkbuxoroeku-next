@@ -1,15 +1,17 @@
-"use client";
-import Button from "@/components/ui/Button";
-import Modal from "@/components/ui/Modal";
-import SlidingImages from "@/components/ui/SlidingImages";
-import PhoneInput from "@/components/ui/TelNumberInput";
-import TotalInfoCards from "@/components/ui/TotalInfoCards";
-import { useState } from "react";
-import "./app.css";
-import ServicesSection from "./services/ServicesSection";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import FirstImg from "../../images/home-page-1.jpg";
+import SecondImg from "../../images/home-page-2.jpg";
+import Button from "./Button";
+import Modal from "./Modal";
+import PhoneInput from "./TelNumberInput";
 
-const Home = () => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
+const ImageSlider = () => {
+    const [IsModalVisible, setIsModalVisible] = useState(false);
+    const imageGroups = [
+        [FirstImg, FirstImg],
+        [SecondImg, SecondImg],
+    ];
     const [formData, setFormData] = useState({
         name: "",
         telnum: "",
@@ -35,17 +37,75 @@ const Home = () => {
         setFormData({ name: "", telnum: "", message: "" });
     };
 
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isVisible, setIsVisible] = useState(true);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIsVisible(false);
+
+            setTimeout(() => {
+                setCurrentImageIndex(
+                    (prevIndex) => (prevIndex + 1) % imageGroups.length
+                );
+                setIsVisible(true);
+            }, 222);
+        }, 9999);
+
+        return () => clearInterval(interval);
+    }, [imageGroups.length]);
+
     return (
-        <div className='container home-bg-wrapper w-screen'>
-            <div className='scroll-line'></div>
-            <div className='h-screen flex items-center justify-between'>
-                <SlidingImages />
-                <div className='flex items-center scroll-px-10 mt-[70px]'>
-                    <TotalInfoCards />
+        <div className='relative flex w-[50vw] h-screen'>
+            <div
+                className='relative w-full h-full overflow-hidden'
+                style={{
+                    transition: "opacity 0.5s ease-in-out",
+                    opacity: isVisible ? 1 : 0,
+                }}>
+                <Image
+                    src={imageGroups[currentImageIndex][0]}
+                    alt='Main image'
+                    layout='fill'
+                    objectFit='cover'
+                    priority
+                />
+
+                <div className='absolute inset-0 flex flex-col justify-center p-10 bg-gradient-to-r from-purple-900/70 to-transparent text-white'>
+                    <h1 className='text-4xl font-bold mb-4'>
+                        Дом планирования семьи
+                    </h1>
+                    <p className='text-xl max-w-md'>
+                        Преодоление бесплодия – ключевое направление
+                        медицинского центра в Ташкенте. Современные
+                        репродуктивные технологии, передовое оснащение и
+                        отличные специалисты
+                    </p>
+                    <Button
+                        className='mt-6 bg-white text-purple-800 px-6 py-2 rounded-md w-fit hover:bg-purple-100 transition-colors'
+                        onClick={() => setIsModalVisible(true)}>
+                        Записаться
+                    </Button>
+                </div>
+            </div>
+
+            <div className='absolute left-full top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
+                <div
+                    className='relative w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-lg'
+                    style={{
+                        transition: "opacity 0.5s ease-in-out",
+                        opacity: isVisible ? 1 : 0,
+                    }}>
+                    <Image
+                        src={imageGroups[currentImageIndex][1]}
+                        alt='Circle image'
+                        layout='fill'
+                        objectFit='cover'
+                    />
                 </div>
             </div>
             <Modal
-                isOpen={isModalVisible}
+                isOpen={IsModalVisible}
                 onClose={() => setIsModalVisible(false)}
                 title='Записаться'>
                 <form onSubmit={handleSubmit}>
@@ -138,9 +198,8 @@ const Home = () => {
                     </div>
                 </form>
             </Modal>
-            <ServicesSection />
         </div>
     );
 };
 
-export default Home;
+export default ImageSlider;

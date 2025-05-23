@@ -1,9 +1,11 @@
+"use client";
+
 import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface IModalProps {
     isOpen: boolean;
     onClose: () => void;
-    title: string;
+    title?: string;
     children: ReactNode;
 }
 

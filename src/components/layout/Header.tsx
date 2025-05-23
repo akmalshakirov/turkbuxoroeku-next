@@ -1,29 +1,36 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { usePathname } from "next/navigation";
+import React, { useEffect } from "react";
 import IconBlack from "../../../public/icon-black.svg";
 import Icon from "../../../public/icon.svg";
-import Dropdown from "../../images/dropdownicon.png";
 import Flag_EN from "../../images/flag-en.png";
 import Flag_RU from "../../images/flag-ru.png";
 import Flag_UZ from "../../images/flag-uz.png";
-import OperatorIcon from "../../images/operator.png";
 import LocationIcon from "../../images/location.svg";
+import OperatorIcon from "../../images/operator.png";
+import AnimatedIcon from "../ui/AnimatedHeadIcon";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
-import "./Header.css";
 import PhoneInput from "../ui/TelNumberInput";
+import "./Header.css";
 
-const Header = () => {
+interface IHeaderActive {
+    isActive: boolean;
+}
+
+const Header = ({ isActive = false }: IHeaderActive) => {
     const [headerActive, setHeaderActive] = React.useState(false);
     const [langActive, setLangActive] = React.useState(false);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [scrolled, setScrolled] = React.useState(false);
     const [formData, setFormData] = React.useState({
         name: "",
         telnum: "",
         message: "",
     });
+    const location = usePathname();
 
     const handleInputChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -48,11 +55,26 @@ const Header = () => {
         setIsModalOpen(true);
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 0);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <>
             <header
-                className={`header transition-colors text-white ${
-                    headerActive ? "bg-white" : "bg-transparent"
+                className={`header transition-all duration-300 text-white ${
+                    headerActive || isActive
+                        ? "bg-white"
+                        : "bg-transparent text-inherit"
+                } ${
+                    scrolled
+                        ? "bg-white transition-colors shadow-lg"
+                        : "bg-transparent"
                 }`}>
                 <link
                     rel='preload'
@@ -62,7 +84,11 @@ const Header = () => {
                 <nav className='container mx-auto flex justify-between items-center p-4 border-b border-b-black/15'>
                     <Link href='/'>
                         <Image
-                            src={headerActive ? IconBlack : Icon}
+                            src={
+                                headerActive || location !== "/" || scrolled
+                                    ? IconBlack
+                                    : Icon
+                            }
                             alt='Icon'
                             priority
                         />
@@ -76,7 +102,7 @@ const Header = () => {
                             width={40}
                             height={40}
                             className={`p-[3px] rounded-[10px] ${
-                                headerActive
+                                headerActive || scrolled
                                     ? "invert-100 bg-white/10"
                                     : "bg-pink-500/30"
                             }`}
@@ -85,20 +111,28 @@ const Header = () => {
                         <div>
                             <p
                                 className={`${
-                                    headerActive ? "text-black" : "text-white"
+                                    headerActive || location !== "/" || scrolled
+                                        ? "text-black"
+                                        : "text-white"
                                 }`}>
                                 +998 99 718 03-03
                             </p>
                             <small
                                 className={`${
-                                    headerActive ? "text-black" : "text-white"
+                                    headerActive || location !== "/" || scrolled
+                                        ? "text-black"
+                                        : "text-white"
                                 }`}>
                                 Turk Buxoro Eku Markazi
                             </small>
                         </div>
                     </a>
                     <div className='flex items-center gap-3.5'>
-                        <Button variant='primary' size='md' onClick={openModal}>
+                        <Button
+                            name='button'
+                            variant='primary'
+                            size='md'
+                            onClick={openModal}>
                             Записаться
                         </Button>
                         <Modal
@@ -207,6 +241,7 @@ const Header = () => {
                                 langActive ? "dropdown-active" : ""
                             }`}
                             type='button'
+                            name='button'
                             onClick={() => setLangActive(!langActive)}>
                             <ul>
                                 <li>
@@ -214,16 +249,12 @@ const Header = () => {
                                         src={Flag_RU}
                                         alt='flag ru'
                                         priority
-                                    />{" "}
-                                    RU
-                                    <Image
-                                        src={Dropdown}
-                                        alt='dropdown'
-                                        width={15}
-                                        height={15}
-                                        className='invert-100'
-                                        priority
+                                        className='mr-[4px]!'
                                     />
+                                    RU
+                                    <span className={`text-black/60`}>
+                                        <AnimatedIcon isActive={langActive} />
+                                    </span>
                                 </li>
                                 <ul onClick={(e) => e.stopPropagation()}>
                                     <li>
@@ -231,6 +262,7 @@ const Header = () => {
                                             src={Flag_UZ}
                                             alt='flag uz'
                                             priority
+                                            className='mr-1'
                                         />
                                         UZ
                                     </li>
@@ -239,6 +271,7 @@ const Header = () => {
                                             src={Flag_EN}
                                             alt='flag en'
                                             priority
+                                            className='mr-1'
                                         />
                                         EN
                                     </li>

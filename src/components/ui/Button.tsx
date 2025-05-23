@@ -4,6 +4,7 @@ interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     variant?: "primary" | "white";
     size?: "sm" | "md" | "lg";
+    name?: string;
 }
 
 const Button = ({
@@ -11,6 +12,7 @@ const Button = ({
     variant = "primary",
     size = "md",
     className = "",
+    name = "",
     ...props
 }: IButton) => {
     const baseStyle = "rounded-[10px] outline-none max-w-max";

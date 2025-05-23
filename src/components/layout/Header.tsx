@@ -56,6 +56,16 @@ const Header = ({ isActive = false }: IHeaderActive) => {
     };
 
     useEffect(() => {
+        if (langActive) {
+            const timer = setTimeout(() => {
+                setLangActive(false);
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [langActive]);
+
+    useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };

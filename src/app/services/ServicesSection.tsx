@@ -43,7 +43,10 @@ const ServicesSection = () => {
         <div className='mt-20 mb-5'>
             <div className='flex justify-between items-center'>
                 <h1 className='text-3xl mb-5 font-bold'>Услуги</h1>
-                <Link href='/services' className='group flex items-center'>
+                <Link
+                    href='/services'
+                    className='group flex items-center'
+                    aria-label='/about'>
                     Все услуги
                     <ArrowRight
                         className='transition-transform duration-100 ease-in-out inline group-hover:translate-x-1 ml-1'
@@ -55,6 +58,7 @@ const ServicesSection = () => {
             <div className='grid grid-cols-4 gap-[1.464vw]'>
                 {ServiceCardArr.map((card) => (
                     <Link
+                        aria-label='/about'
                         key={card.id}
                         href='/services'
                         className='flex flex-col justify-between gap-[40px] p-[16px] hover:bg-[#be0058] hover:text-white rounded-[24px] bg-[#fdf6f0] transition-colors no-underline'>

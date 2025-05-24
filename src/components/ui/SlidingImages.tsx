@@ -82,6 +82,8 @@ const ImageSlider = () => {
                         отличные специалисты
                     </p>
                     <Button
+                        aria-label="it's button"
+                        name='wtf'
                         className='mt-6 bg-white text-purple-800 px-6 py-2 rounded-md w-fit hover:bg-purple-100 transition-colors'
                         onClick={() => setIsModalVisible(true)}>
                         Записаться
@@ -189,6 +191,8 @@ const ImageSlider = () => {
 
                     <div className='text-white max-w-max'>
                         <Button
+                            aria-label="it's button"
+                            name='wtf'
                             type='submit'
                             variant='primary'
                             size='sm'

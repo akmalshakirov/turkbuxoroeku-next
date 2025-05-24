@@ -7,6 +7,7 @@ import TotalInfoCards from "@/components/ui/TotalInfoCards";
 import { useState } from "react";
 import "./app.css";
 import ServicesSection from "./services/ServicesSection";
+import AboutSection from "./about/AboutSection";
 
 const Home = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -128,6 +129,7 @@ const Home = () => {
 
                     <div className='text-white max-w-max'>
                         <Button
+                            name='wtf'
                             type='submit'
                             variant='primary'
                             size='sm'
@@ -138,6 +140,7 @@ const Home = () => {
                 </form>
             </Modal>
             <ServicesSection />
+            <AboutSection />
         </div>
     );
 };

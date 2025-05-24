@@ -61,12 +61,16 @@
     outline: none;
     transition: all 0.3s;
     background-color: #df0971;
+    rotate: 0;
 }
 .burger-menu:hover {
     background-color: #e71597;
 }
 .burger-menu.burger-close:hover {
     background-color: #df0970a4;
+}
+.burger-menu.burger-close {
+    rotate: 90deg;
 }
 .burger-menu.burger-close span:first-child {
     position: absolute;

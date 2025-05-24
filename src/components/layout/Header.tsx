@@ -59,15 +59,25 @@ const Header = ({ isActive = false }: IHeaderActive) => {
         if (langActive) {
             const timer = setTimeout(() => {
                 setLangActive(false);
-            }, 3000);
+            }, 10000);
 
             return () => clearTimeout(timer);
         }
     }, [langActive]);
 
     useEffect(() => {
+        if (headerActive) {
+            const timer = setTimeout(() => {
+                setHeaderActive(false);
+            }, 30000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [headerActive]);
+
+    useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            setScrolled(window.scrollY > 40);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -92,7 +102,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                     as='image'
                 />
                 <nav className='container mx-auto flex justify-between items-center p-4 border-b border-b-black/15'>
-                    <Link href='/'>
+                    <Link href='/' aria-label="href='/'">
                         <Image
                             src={
                                 headerActive || location !== "/" || scrolled
@@ -112,7 +122,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                             width={40}
                             height={40}
                             className={`p-[3px] rounded-[10px] ${
-                                headerActive || scrolled
+                                headerActive || scrolled || location !== "/"
                                     ? "invert-100 bg-white/10"
                                     : "bg-pink-500/30"
                             }`}
@@ -139,6 +149,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                     </a>
                     <div className='flex items-center gap-3.5'>
                         <Button
+                            aria-label="it's button"
                             name='button'
                             variant='primary'
                             size='md'
@@ -237,6 +248,8 @@ const Header = ({ isActive = false }: IHeaderActive) => {
 
                                 <div className='text-white max-w-max'>
                                     <Button
+                                        aria-label="it's button"
+                                        name='wtf'
                                         type='submit'
                                         variant='primary'
                                         size='sm'
@@ -252,6 +265,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                             }`}
                             type='button'
                             name='button'
+                            aria-label="it's button"
                             onClick={() => setLangActive(!langActive)}>
                             <ul>
                                 <li>
@@ -291,26 +305,32 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                     </div>
                     <div className='flex items-center gap-4 max-md:hidden text-black'>
                         <Link
+                            aria-label="href='/about'"
                             href='/about'
                             className='hover:text-blue-300 transition-colors'>
                             O нас
                         </Link>
                         <Link
+                            aria-label="href='/services'"
                             href='/services'
                             className='hover:text-blue-300 transition-colors'>
                             Услуги
                         </Link>
                         <Link
+                            aria-label="href='/news'"
                             href='/news'
                             className='hover:text-blue-300 transition-colors'>
                             Новости и блог
                         </Link>
                         <Link
+                            aria-label="href='/contacts'"
                             href='/contacts'
                             className='hover:text-blue-300 transition-colors'>
                             Контакты
                         </Link>
                         <button
+                            aria-label="it's button"
+                            name='wtf'
                             className={`burger-menu ${
                                 headerActive
                                     ? "burger-close bg-[#0000007c]"
@@ -332,22 +352,28 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                     className='flex gap-[140px] header-popup-active border-t border-t-[#e4016a]'>
                     <div className='pt-[20px]'>
                         <h2>
-                            <Link href='/about' className='w-max'>
+                            <Link
+                                href='/about'
+                                aria-label="href='/about'"
+                                className='w-max'>
                                 <b>O нас</b>
                             </Link>
                         </h2>
                         <h2 className='flex flex-col'>
                             <Link
+                                aria-label="href='/services'"
                                 href='/services'
                                 className='w-max max-w-[280px]'>
                                 <b>Услуги</b>
                             </Link>
                             <Link
+                                aria-label="href='/services'"
                                 href='/services'
                                 className='text-gray-600 w-max max-w-[280px]'>
                                 Искусственное оплодотворение (ЭКО)
                             </Link>
                             <Link
+                                aria-label="href='/services'"
                                 href='/services'
                                 className='text-gray-600 w-max max-w-[280px]'>
                                 Интрацитоплазматическая инъекция сперматозоидов
@@ -355,42 +381,59 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                             </Link>
                             <Link
                                 href='/services'
+                                aria-label="href='/services'"
                                 className='text-gray-600 w-max max-w-[280px]'>
                                 Консультации по репродукции и лечению бесплодия
                             </Link>
                         </h2>
                         <h2>
-                            <Link href='/services'>
+                            <Link
+                                href='/services'
+                                aria-label="href='/services'">
                                 <b>Процедуры и процессы</b>
                             </Link>
                         </h2>
                     </div>
                     <div className='flex flex-col pt-[20px]'>
                         <h2>
-                            <Link href='/services'>
+                            <Link
+                                href='/services'
+                                aria-label="href='/services'">
                                 <b>Успешные истории</b>
                             </Link>
                         </h2>
                         <h2>
-                            <Link href='/services'>Отзывы пациентов</Link>
+                            <Link
+                                href='/services'
+                                aria-label="href='/services'">
+                                Отзывы пациентов
+                            </Link>
                         </h2>
                         <h2>
-                            <Link href='/services'>
+                            <Link
+                                href='/services'
+                                aria-label="href='/services'">
                                 Видео-интервью с пациентами
                             </Link>
                         </h2>
                         <h2>
-                            <Link href='/services'>
+                            <Link
+                                href='/services'
+                                aria-label="href='/services'">
                                 <b>Ресурсы и поддержка</b>
                             </Link>
                         </h2>
                         <h2>
-                            <Link href='/services'>
+                            <Link
+                                href='/services'
+                                aria-label="href='/services'">
                                 <b>Новости</b>
                             </Link>
                         </h2>
                         <h2>
-                            <Link href='/services'>
+                            <Link
+                                href='/services'
+                                aria-label="href='/services'">
                                 <b>Контакты</b>
                             </Link>
                         </h2>

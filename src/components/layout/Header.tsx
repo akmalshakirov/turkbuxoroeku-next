@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import IconBlack from "../../../public/icon-black.svg";
 import Icon from "../../../public/icon.svg";
 import Flag_EN from "../../images/flag-en.png";
@@ -25,6 +25,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
     const [langActive, setLangActive] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const dropdownRef = useRef<HTMLButtonElement>(null);
     const [formData, setFormData] = useState({
         name: "",
         telnum: "",
@@ -41,6 +42,22 @@ const Header = ({ isActive = false }: IHeaderActive) => {
             [name]: value,
         }));
     };
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target as Node)
+            ) {
+                setLangActive(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -249,7 +266,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                                 <div className='text-white max-w-max'>
                                     <Button
                                         aria-label="it's button"
-                                        name='wtf'
+                                        name='button'
                                         type='submit'
                                         variant='primary'
                                         size='sm'
@@ -260,6 +277,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                             </form>
                         </Modal>
                         <button
+                            ref={dropdownRef}
                             className={`dropdown text-black ${
                                 langActive ? "dropdown-active" : ""
                             }`}
@@ -280,7 +298,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                                         <AnimatedIcon isActive={langActive} />
                                     </span>
                                 </li>
-                                <ul onClick={(e) => e.stopPropagation()}>
+                                <div onClick={(e) => e.stopPropagation()}>
                                     <li>
                                         <Image
                                             src={Flag_UZ}
@@ -299,7 +317,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                                         />
                                         EN
                                     </li>
-                                </ul>
+                                </div>
                             </ul>
                         </button>
                     </div>
@@ -330,7 +348,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                         </Link>
                         <button
                             aria-label="it's button"
-                            name='wtf'
+                            name='button'
                             className={`burger-menu ${
                                 headerActive
                                     ? "burger-close bg-[#0000007c]"

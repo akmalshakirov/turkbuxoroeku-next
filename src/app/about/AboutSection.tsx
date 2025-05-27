@@ -80,7 +80,7 @@ const AboutSection = () => {
                                 />
                             </Link>
                         </div>
-                        <div className='flex mt-2.5 flex-col gap-[50px] items-center py-5 px-9 rounded-lg shadow-2xl'>
+                        <div className='flex mt-2.5 flex-col gap-[50px] items-center py-5 px-9 rounded-lg shadow-2xl bg-[var(--primary-color)]/60'>
                             <h1>СВЯЗАТЬСЯ C НАМИ</h1>
                             <Button
                                 name='Записаться'

@@ -2,9 +2,7 @@ const DoctorsPage = () => {
     return (
         <div>
             <div>
-                <div>
-                    <h1>Врачи</h1>
-                </div>
+                <h1>Doctors</h1>
             </div>
         </div>
     );

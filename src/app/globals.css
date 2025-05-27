@@ -6,6 +6,7 @@
     --width-container: 1272px;
     font-family: sans-serif;
     scroll-behavior: smooth;
+    --primary-color: #df0467;
 }
 
 body {

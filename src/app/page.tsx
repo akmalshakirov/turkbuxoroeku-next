@@ -5,9 +5,10 @@ import SlidingImages from "@/components/ui/SlidingImages";
 import PhoneInput from "@/components/ui/TelNumberInput";
 import TotalInfoCards from "@/components/ui/TotalInfoCards";
 import { useState } from "react";
-import "./app.css";
-import ServicesSection from "./services/ServicesSection";
 import AboutSection from "./about/AboutSection";
+import "./app.css";
+import DoctorsPage from "./doctors/DoctorsSection";
+import ServicesSection from "./services/ServicesSection";
 
 const Home = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -129,7 +130,7 @@ const Home = () => {
 
                     <div className='text-white max-w-max'>
                         <Button
-                            name='wtf'
+                            name='button'
                             type='submit'
                             variant='primary'
                             size='sm'
@@ -141,6 +142,7 @@ const Home = () => {
             </Modal>
             <ServicesSection />
             <AboutSection />
+            <DoctorsPage />
         </div>
     );
 };

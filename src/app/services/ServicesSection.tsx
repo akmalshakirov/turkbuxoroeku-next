@@ -45,7 +45,7 @@ const ServicesSection = () => {
                 <h1 className='text-3xl mb-5 font-bold'>Услуги</h1>
                 <Link
                     href='/services'
-                    className='group flex items-center'
+                    className='group flex items-center no-underline! hover:text-[var(--primary-color)]'
                     aria-label='/about'>
                     Все услуги
                     <ArrowRight

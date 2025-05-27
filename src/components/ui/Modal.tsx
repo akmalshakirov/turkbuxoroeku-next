@@ -66,7 +66,7 @@ const Modal = ({ isOpen, onClose, title, children }: IModalProps) => {
                 <div className='flex justify-between items-center mb-4'>
                     <h3 className='text-xl font-semibold'>{title}</h3>
                     <button
-                        name='wtf'
+                        name='button'
                         onClick={onClose}
                         className='text-gray-500 rounded hover:bg-gray-300 transition-colors'
                         aria-label='Yopish'>

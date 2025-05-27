@@ -38,7 +38,7 @@ const Home = () => {
     };
 
     return (
-        <div className='home-bg-wrapper w-screen container mx-auto'>
+        <div className='home-bg-wrapper max-w-[var(--width-container)] mx-auto'>
             <div className='h-screen flex items-center max-md:justify-start justify-between'>
                 <SlidingImages />
                 <div className='flex items-center scroll-px-10 mt-[70px]'>

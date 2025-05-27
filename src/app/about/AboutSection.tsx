@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button";
+import { Icons } from "@/icons";
 import { Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,7 +37,7 @@ const AboutSection = () => {
                             </Button>
                         </Link>
                     </div>
-                    <div className='flex items-center gap-5 mt-5'>
+                    <div className='flex items-center gap-5 mt-5 w-full'>
                         <div>
                             <p className='font-bold text-2xl text-[#921a58]'>
                                 8
@@ -60,10 +61,11 @@ const AboutSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className='flex items-center gap-2.5 mt-6'>
+                <div className='flex items-center gap-2.5 mt-6 ml-[100px]'>
                     <div>
                         <div className='relative'>
                             <Image
+                                style={{ objectFit: "cover" }}
                                 src={AboutVideoImg}
                                 alt='about video image'
                                 className='w-full h-full object-cover rounded-lg'
@@ -72,7 +74,7 @@ const AboutSection = () => {
                                 aria-label='/about'
                                 target='_blank'
                                 href='https://www.youtube.com/embed/7PwW2TJVb_0?si=grls8SsftWlDn9gy'
-                                className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#c63d7d] rounded-lg p-2'>
+                                className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#fa0075] rounded-lg p-2'>
                                 <Play
                                     size={25}
                                     className='text-white'
@@ -80,17 +82,22 @@ const AboutSection = () => {
                                 />
                             </Link>
                         </div>
-                        <div className='flex mt-2.5 flex-col gap-[50px] items-center py-5 px-9 rounded-lg shadow-2xl bg-[var(--primary-color)]/60'>
-                            <h1>СВЯЗАТЬСЯ C НАМИ</h1>
+                        <div className='relative flex mt-2.5 flex-col gap-[35px] pt-[20px] pl-[20px] pb-[20px] pr-10 rounded-lg shadow-2xl border border-gray-300'>
+                            <h1 className='text-2xl'>
+                                СВЯЗАТЬСЯ <br /> C НАМИ
+                            </h1>
                             <Button
                                 name='Записаться'
                                 aria-label="it's button"
                                 className='text-white'>
                                 Записаться
                             </Button>
+                            <div className='absolute top-[40px] right-0 w-[90px] h-[90px] -z-1 opacity-20'>
+                                <Icons.homeAboutCardIcon />
+                            </div>
                         </div>
                     </div>
-                    <div className='my-auto h-[92%] mt-0'>
+                    <div className='my-auto h-full mt-0'>
                         <Image
                             src={AboutVideoSocialM}
                             alt='wtf'

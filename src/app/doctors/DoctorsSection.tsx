@@ -84,8 +84,8 @@ export default function DoctorsSection() {
     }, []);
 
     return (
-        <section className='relative'>
-            <div className={styles.header}>
+        <section className='relative mt-6'>
+            <div className='flex items-center justify-between'>
                 <h2>Врачи</h2>
                 <Link
                     href='/services'

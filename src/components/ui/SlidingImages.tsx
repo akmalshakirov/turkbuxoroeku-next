@@ -54,7 +54,7 @@ const ImageSlider = () => {
                         отличные специалисты
                     </p>
                     <Button
-                        aria-label="it's button"
+                        aria-label='Записаться на прием'
                         name='button'
                         className='mt-6 bg-white text-purple-800 px-6 py-2 rounded-md w-fit hover:bg-purple-100 transition-colors'>
                         Записаться

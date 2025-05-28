@@ -61,7 +61,7 @@ const ServicesSection = () => {
                         aria-label='/about'
                         key={card.id}
                         href='/services'
-                        className='flex flex-col justify-between gap-[40px] p-[16px] hover:bg-[#be0058] hover:text-white rounded-[24px] bg-[#fdf6f0] transition-colors no-underline'>
+                        className='flex flex-col justify-between gap-[40px] p-[16px] hover:bg-[#be0058] hover:text-white rounded-[24px] bg-[#fdf6f0] no-underline! transition-colors duration-300 ease-in-out'>
                         <span className='max-w-max p-1'>{card.icon}</span>
                         <p>{card.title}</p>
                     </Link>

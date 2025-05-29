@@ -31,7 +31,7 @@ export default function ScrollHorizontal({
                                     ? `${styles["animation-swipe-reverse"]}`
                                     : `${styles["animation-swipe"]}`
                             } flex group-hover:[animation-play-state:paused]!`}
-                            key={index}>
+                            key={index + Math.random() * 1000}>
                             {children}
                         </div>
                     );

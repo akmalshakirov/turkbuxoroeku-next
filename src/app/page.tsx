@@ -8,6 +8,7 @@ import { useState } from "react";
 import AboutSection from "./about/AboutSection";
 import "./app.css";
 import DoctorsPage from "./doctors/DoctorsSection";
+import ReviewsSection from "./reviews/ReviewsSection";
 import ServicesSection from "./services/ServicesSection";
 
 const Home = () => {
@@ -143,6 +144,7 @@ const Home = () => {
             <ServicesSection />
             <AboutSection />
             <DoctorsPage />
+            <ReviewsSection />
         </div>
     );
 };

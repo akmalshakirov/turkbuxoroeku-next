@@ -82,7 +82,7 @@ const AboutSection = () => {
                                 />
                             </Link>
                         </div>
-                        <div className='relative flex mt-2.5 flex-col gap-[35px] pt-[20px] pl-[20px] pb-[20px] pr-10 rounded-lg shadow-2xl border border-gray-300'>
+                        <div className='relative flex mt-2.5 flex-col gap-[35px] pt-[20px] pl-[20px] pb-[20px] pr-10 rounded-lg shadow-lg border border-gray-300'>
                             <h1 className='text-2xl'>
                                 СВЯЗАТЬСЯ <br /> C НАМИ
                             </h1>

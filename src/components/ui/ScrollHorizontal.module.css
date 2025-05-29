@@ -1,0 +1,24 @@
+.animation-swipe {
+    animation: swipe 20s linear infinite backwards;
+}
+.animation-swipe-reverse {
+    animation: swipeReverse 20s linear infinite backwards;
+}
+
+@keyframes swipe {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes swipeRevirse {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

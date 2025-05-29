@@ -1,7 +1,7 @@
+import ScrollHorizontal from "@/components/ui/ScrollHorizontal";
 import { ArrowRight } from "lucide-react";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 import AndreyDoctor from "../../images/andrey-doctor.png";
 import AndreyIgorovichDoctor from "../../images/andrey-igorovich-doctor.png";
 import DiloromDoctor from "../../images/dilorom-doctor.png";
@@ -16,7 +16,7 @@ interface Doctor {
     link: string;
 }
 
-const originalDoctors: Doctor[] = [
+const doctors: Doctor[] = [
     {
         id: 1,
         name: "Хольнов Андрей Игоревич",
@@ -47,57 +47,15 @@ const originalDoctors: Doctor[] = [
     },
 ];
 
-const doctors = [...originalDoctors, ...originalDoctors, ...originalDoctors];
-
 export default function DoctorsSection() {
-    const sliderRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const slider = sliderRef.current;
-        if (!slider) return;
-
-        let animationFrame: number;
-        let scrollSpeed = 1;
-
-        const smoothScroll = () => {
-            if (slider.scrollLeft >= slider.scrollWidth / 2) {
-                slider.scrollLeft = 0;
-            } else {
-                slider.scrollLeft += scrollSpeed;
-            }
-            animationFrame = requestAnimationFrame(smoothScroll);
-        };
-
-        const startScroll = () => {
-            scrollSpeed = 1;
-            animationFrame = requestAnimationFrame(smoothScroll);
-        };
-
-        const stopScroll = () => {
-            scrollSpeed = 0;
-            cancelAnimationFrame(animationFrame);
-        };
-
-        startScroll();
-
-        slider.addEventListener("mouseover", stopScroll);
-        slider.addEventListener("mouseout", startScroll);
-
-        return () => {
-            cancelAnimationFrame(animationFrame);
-            slider.removeEventListener("mouseover", stopScroll);
-            slider.removeEventListener("mouseout", startScroll);
-        };
-    }, []);
-
     return (
         <section className='relative mt-10 mb-10'>
             <div className='flex items-center justify-between'>
                 <h2 className='text-3xl font-bold'>Врачи</h2>
                 <Link
-                    href='/services'
+                    href='/doctors'
                     className='group flex items-center no-underline! hover:text-[var(--primary-color)]'
-                    aria-label='/about'>
+                    aria-label='Все услуги'>
                     Все услуги
                     <ArrowRight
                         className='transition-transform duration-100 ease-in-out inline group-hover:translate-x-1 ml-1'
@@ -107,24 +65,28 @@ export default function DoctorsSection() {
             </div>
 
             <div className={styles.sliderWrapper}>
-                <div className={styles.slider} ref={sliderRef}>
-                    {doctors.map((doc, i) => (
-                        <Link
-                            href={`/doctors/${doc.link}`}
-                            key={`${doc.id}-${i}`}
-                            className={styles.card}>
-                            <div className={styles.photo}>
-                                <img
-                                    src={doc.photo.src}
-                                    alt={doc.name}
-                                    width={200}
-                                    height={200}
-                                />
-                            </div>
-                            <span className={styles.spec}>{doc.specialty}</span>
-                            <h3 className={styles.name}>{doc.name}</h3>
-                        </Link>
-                    ))}
+                <div className={styles.slider}>
+                    <ScrollHorizontal>
+                        {doctors.map((doc, i) => (
+                            <Link
+                                href={`/doctors/${doc.link}`}
+                                key={`${doc.id}-${i}`}
+                                className={styles.card}>
+                                <div className={styles.photo}>
+                                    <img
+                                        src={doc.photo.src}
+                                        alt={doc.name}
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <span className={styles.spec}>
+                                    {doc.specialty}
+                                </span>
+                                <h3 className={styles.name}>{doc.name}</h3>
+                            </Link>
+                        ))}
+                    </ScrollHorizontal>
                 </div>
             </div>
         </section>

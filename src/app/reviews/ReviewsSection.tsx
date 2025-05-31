@@ -1,4 +1,5 @@
 import { ArrowRight, PlayIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import ReviewsFirst from "../../images/reviews-rak.png";
@@ -35,6 +36,15 @@ const reviews = [
 
 const ReviewsSection = () => {
     const [activeTab, setActiveTab] = useState("video");
+    const [animate, setAnimate] = useState(false);
+
+    const handleTabChange = (tab: string) => {
+        setAnimate(true);
+        setTimeout(() => {
+            setActiveTab(tab);
+            setAnimate(false);
+        }, 200);
+    };
 
     return (
         <section className={styles.reviewsSection}>
@@ -57,33 +67,34 @@ const ReviewsSection = () => {
                     className={`${styles.tabButton} ${
                         activeTab === "video" ? styles.active : ""
                     }`}
-                    onClick={() => setActiveTab("video")}>
+                    onClick={() => handleTabChange("video")}>
                     Видео-интервью с пациентами
                 </button>
                 <button
                     className={`${styles.tabButton} ${
                         activeTab === "text" ? styles.active : ""
                     }`}
-                    onClick={() => setActiveTab("text")}>
+                    onClick={() => handleTabChange("text")}>
                     Отзывы пациентов
                 </button>
             </div>
 
-            <div className={styles.slider}>
+            <div
+                className={`${styles.slider} ${
+                    animate ? styles.animateOut : styles.animateIn
+                }`}>
                 {activeTab === "video" ? (
                     reviews.map((review) => (
-                        <div
-                            key={`${review.id}-${
-                                review.id + Math.random() * 1000
-                            }`}
-                            className={styles.card}>
+                        <div key={review.id} className={styles.card}>
                             <div className={styles.thumbnail}>
-                                <img
+                                <Image
                                     src={review.thumbnail.src}
                                     alt={review.title}
+                                    width={300}
+                                    height={200}
                                 />
                                 <button className={styles.playButton}>
-                                    <PlayIcon size={40} className='p-2' />
+                                    <PlayIcon size={45} className='p-2' />
                                 </button>
                             </div>
                             <h3 className={styles.title}>{review.title}</h3>

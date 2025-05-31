@@ -7,6 +7,8 @@
     font-family: sans-serif;
     scroll-behavior: smooth;
     --primary-color: #df0467;
+    scrollbar-color: var(--primary-color) transparent;
+    scrollbar-width: thin;
 }
 
 body {

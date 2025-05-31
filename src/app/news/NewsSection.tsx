@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./NewsSection.module.css";
 import NewsKlinika from "../../images/news-klinika.jpg";
 import NewsLeksiya from "../../images/news-leksiya.jpg";
+import ScrollHorizontal from "@/components/ui/ScrollHorizontal";
 
 interface INewsProps {
     id: number;
@@ -12,6 +13,7 @@ interface INewsProps {
     views: number;
     description: string;
     image: StaticImageData;
+    link: string;
 }
 
 const newsData: INewsProps[] = [
@@ -23,6 +25,7 @@ const newsData: INewsProps[] = [
         description:
             "12 февраля - День репродуктивного здоровья. Делимся с вами сюжетом о диагностике и лечении бесплодия…",
         image: NewsKlinika,
+        link: "/news",
     },
     {
         id: 2,
@@ -32,6 +35,7 @@ const newsData: INewsProps[] = [
         description:
             "25 сентября на площадке состоялась лекция «Мужские биологические часы. Необструктивная азооспермия –…",
         image: NewsLeksiya,
+        link: "/news",
     },
 ];
 
@@ -53,38 +57,43 @@ const NewsSection = () => {
             </div>
 
             <div className={styles.newsGrid}>
-                {newsData.map((news) => (
-                    <div key={news.id} className={styles.newsCard}>
-                        <div className={styles.imageWrapper}>
-                            <Image
-                                src={news.image}
-                                alt={news.title}
-                                width={300}
-                                height={200}
-                                className={styles.image}
-                            />
-                        </div>
-                        <div className={styles.info}>
-                            <div className={styles.meta}>
-                                <span className={styles.date}>
-                                    <CalendarDays
-                                        className='inline'
-                                        size={20}
-                                    />{" "}
-                                    {news.date}
-                                </span>
-                                <span className={styles.views}>
-                                    <Eye className='inline' size={20} />{" "}
-                                    {news.views}
-                                </span>
+                <ScrollHorizontal>
+                    {newsData.map((news) => (
+                        <Link
+                            href={news.link}
+                            key={news.id}
+                            className={`${styles.newsCard}`}>
+                            <div className={styles.imageWrapper}>
+                                <Image
+                                    src={news.image}
+                                    alt={news.title}
+                                    width={300}
+                                    height={200}
+                                    className={styles.image}
+                                />
                             </div>
-                            <h3 className={styles.title}>{news.title}</h3>
-                            <p className={styles.description}>
-                                {news.description}
-                            </p>
-                        </div>
-                    </div>
-                ))}
+                            <div className={styles.info}>
+                                <div className={styles.meta}>
+                                    <span className={styles.date}>
+                                        <CalendarDays
+                                            className='inline'
+                                            size={20}
+                                        />
+                                        {news.date}
+                                    </span>
+                                    <span className={styles.views}>
+                                        <Eye className='inline' size={20} />
+                                        {news.views}
+                                    </span>
+                                </div>
+                                <h3 className={styles.title}>{news.title}</h3>
+                                <p className={styles.description}>
+                                    {news.description}
+                                </p>
+                            </div>
+                        </Link>
+                    ))}
+                </ScrollHorizontal>
             </div>
         </section>
     );

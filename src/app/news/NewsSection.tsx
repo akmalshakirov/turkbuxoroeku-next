@@ -1,9 +1,20 @@
-import Image from "next/image";
+import { ArrowRight, CalendarDays, Eye } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import styles from "./NewsSection.module.css";
-import { ArrowRight } from "lucide-react";
+import NewsKlinika from "../../images/news-klinika.jpg";
+import NewsLeksiya from "../../images/news-leksiya.jpg";
 
-const newsData = [
+interface INewsProps {
+    id: number;
+    title: string;
+    date: string;
+    views: number;
+    description: string;
+    image: StaticImageData;
+}
+
+const newsData: INewsProps[] = [
     {
         id: 1,
         title: "«Сегодня утром». Клиника репродуктивной медицины",
@@ -11,7 +22,7 @@ const newsData = [
         views: 116,
         description:
             "12 февраля - День репродуктивного здоровья. Делимся с вами сюжетом о диагностике и лечении бесплодия…",
-        image: "/images/news-1.jpg", // Rasm manzili
+        image: NewsKlinika,
     },
     {
         id: 2,
@@ -20,16 +31,7 @@ const newsData = [
         views: 120,
         description:
             "25 сентября на площадке состоялась лекция «Мужские биологические часы. Необструктивная азооспермия –…",
-        image: "/images/news-2.jpg", // Rasm manzili
-    },
-    {
-        id: 3,
-        title: "«Сегодня утром». Клиника репродуктивной медицины",
-        date: "02.07.2024",
-        views: 116,
-        description:
-            "12 февраля - День репродуктивного здоровья. Делимся с вами сюжетом о диагностике и лечении бесплодия…",
-        image: "/images/news-3.jpg", // Rasm manzili
+        image: NewsLeksiya,
     },
 ];
 
@@ -65,10 +67,15 @@ const NewsSection = () => {
                         <div className={styles.info}>
                             <div className={styles.meta}>
                                 <span className={styles.date}>
-                                    📅 {news.date}
+                                    <CalendarDays
+                                        className='inline'
+                                        size={20}
+                                    />{" "}
+                                    {news.date}
                                 </span>
                                 <span className={styles.views}>
-                                    👁 {news.views}
+                                    <Eye className='inline' size={20} />{" "}
+                                    {news.views}
                                 </span>
                             </div>
                             <h3 className={styles.title}>{news.title}</h3>
@@ -78,11 +85,6 @@ const NewsSection = () => {
                         </div>
                     </div>
                 ))}
-            </div>
-
-            <div className={styles.navigation}>
-                <button className={styles.navButton}>←</button>
-                <button className={styles.navButton}>→</button>
             </div>
         </section>
     );

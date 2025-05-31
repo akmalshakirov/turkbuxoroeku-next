@@ -23,3 +23,9 @@ button {
 a:hover {
     text-decoration: underline;
 }
+
+svg,
+img {
+    pointer-events: none;
+    user-select: none;
+}

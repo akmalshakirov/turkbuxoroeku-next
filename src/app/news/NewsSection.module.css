@@ -87,3 +87,17 @@
     background-color: #ff6b6b;
     color: #fff;
 }
+
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.views {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}

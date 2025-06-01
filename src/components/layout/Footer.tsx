@@ -1,19 +1,9 @@
 import { Facebook, Instagram, Send, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import AnimatedLink from "../ui/AnimLink";
 
 const Footer = () => {
-    const linkRef = useRef<HTMLAnchorElement>(null);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        if (!linkRef.current) return;
-        const rect = linkRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        linkRef.current.style.setProperty("--tw-hover-origin", `${x}px ${y}px`);
-    };
-
     return (
         <footer className='bg-[#cb4081] text-white py-8'>
             <div className='flex gap-[4.392vw] justify-center'>
@@ -95,24 +85,13 @@ const Footer = () => {
             <div className='text-center mt-8 flex items-center justify-center'>
                 <p className='mr-1'>Все права защищены ©. </p>
                 <p>Разработано:</p>
-                <Link
-                    href='https://limon.group'
+                <AnimatedLink
+                    link='https://limon.group'
                     target='_blank'
                     rel='noopener noreferrer'
-                    title='Limon Group'
-                    ref={linkRef}
-                    onMouseMove={handleMouseMove}
-                    className='relative inline-block px-4 py-2 font-semibold text-white transition-all duration-500 rounded-lg group overflow-hidden no-underline!'>
-                    <span
-                        className='absolute inset-0 w-full h-full bg-gradient-to-r from-pink-400/30 via-yellow-500/80 to-orange-400/90 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300'
-                        style={{
-                            transformOrigin: "var(--tw-hover-origin)",
-                        }}></span>
-
-                    <span className='relative z-10 transition-colors duration-300'>
-                        Limon.group
-                    </span>
-                </Link>
+                    title='Limon Group'>
+                    Limon.group
+                </AnimatedLink>
             </div>
         </footer>
     );

@@ -1,7 +1,7 @@
 import { Facebook, Instagram, Send, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import AnimatedLink from "../ui/AnimLink";
+import AnimatedLink from "../ui/AnimatedLink";
 
 const Footer = () => {
     return (

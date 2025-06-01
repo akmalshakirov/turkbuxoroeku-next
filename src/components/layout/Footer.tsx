@@ -104,7 +104,7 @@ const Footer = () => {
                     onMouseMove={handleMouseMove}
                     className='relative inline-block px-4 py-2 font-semibold text-white transition-all duration-500 rounded-lg group overflow-hidden no-underline!'>
                     <span
-                        className='absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 via-yellow-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300'
+                        className='absolute inset-0 w-full h-full bg-gradient-to-r from-pink-400/30 via-yellow-500/80 to-orange-400/90 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300'
                         style={{
                             transformOrigin: "var(--tw-hover-origin)",
                         }}></span>

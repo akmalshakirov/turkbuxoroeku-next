@@ -68,10 +68,10 @@ const Modal = ({ isOpen, onClose, title, children }: IModalProps) => {
                     <button
                         name='button'
                         onClick={onClose}
-                        className='text-gray-500 rounded hover:bg-gray-300 transition-colors'
+                        className='text-gray-500 rounded hover:bg-gray-300 transition-colors group'
                         aria-label='Yopish'>
                         <svg
-                            className='w-5 h-5'
+                            className='w-6 h-6 group-hover:rotate-90 ease-in-out transition-transform'
                             fill='currentColor'
                             viewBox='0 0 20 20'>
                             <path

@@ -1,0 +1,36 @@
+/* app/components/Breadcrumbs.module.css */
+.breadcrumb {
+    font-size: 0.875rem; /* 14px */
+    margin-bottom: 1rem;
+}
+
+.breadcrumbList {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumbItem {
+    display: flex;
+    align-items: center;
+}
+
+.separator {
+    margin: 0 0.5rem;
+    color: #666;
+}
+
+.link {
+    color: #0070f3;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.current {
+    font-weight: 500;
+    color: #333;
+}

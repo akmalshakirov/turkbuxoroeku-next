@@ -1,4 +1,5 @@
 "use client";
+import "./Modal.css";
 
 import { ReactNode, useEffect, useRef, useState } from "react";
 

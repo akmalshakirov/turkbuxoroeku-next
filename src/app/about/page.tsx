@@ -1,10 +1,27 @@
 "use client";
 
 import Button from "@/components/ui/Button";
+import ScrollHorizontal from "@/components/ui/ScrollHorizontal";
+import { Icons } from "@/icons";
 import Image from "next/image";
 import Link from "next/link";
 import FirstImage from "../../images/home-page-2.jpg";
-import { Icons } from "@/icons";
+// import
+
+const Cards = [
+    {
+        id: 1,
+        image: FirstImage,
+    },
+    {
+        id: 2,
+        image: FirstImage,
+    },
+    {
+        id: 3,
+        image: FirstImage,
+    },
+];
 
 const AboutPage = () => {
     return (
@@ -57,11 +74,17 @@ const AboutPage = () => {
                     />
                     <Icons.siteIcon
                         className='absolute top-1/2 left-0 translate-y-1/2'
-                        width={150}
-                        height={150}
+                        width={120}
+                        height={120}
                     />
                 </div>
             </div>
+            <ScrollHorizontal>
+                <div>
+                    wfeuihufuife
+                    {/* <Image src={} alt='Card image' /> */}
+                </div>
+            </ScrollHorizontal>
         </div>
     );
 };

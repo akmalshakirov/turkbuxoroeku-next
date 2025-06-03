@@ -5,6 +5,8 @@ interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: "primary" | "white";
     size?: "sm" | "md" | "lg";
     name?: string;
+    disabled?: boolean;
+    loading?: boolean;
 }
 
 const Button = ({
@@ -13,6 +15,8 @@ const Button = ({
     size = "md",
     className = "",
     name = "",
+    disabled = false,
+    loading = false,
     ...props
 }: IButton) => {
     const baseStyle = "rounded-[10px] outline-none max-w-max";
@@ -32,7 +36,7 @@ const Button = ({
     const classes = `${baseStyle} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
     return (
-        <button className={classes} {...props}>
+        <button className={classes} {...props} disabled={disabled}>
             {children}
         </button>
     );

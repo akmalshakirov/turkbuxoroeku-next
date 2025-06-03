@@ -3,19 +3,22 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
 interface ITelNumInputProps {
-    onChange?: (value: string) => void;
+    value: string;
+    onChange: (value: string) => void;
     className?: string;
     label?: string;
     required?: boolean;
+    name?: string;
 }
 
 const PhoneInput: React.FC<ITelNumInputProps> = ({
+    value,
     onChange,
     className = "",
     label = "",
     required = false,
+    name = "",
 }) => {
-    const [value, setValue] = useState<string>("");
     const [formattedValue, setFormattedValue] = useState<string>("");
 
     const getOnlyDigits = (val: string): string => val.replace(/\D/g, "");
@@ -44,11 +47,7 @@ const PhoneInput: React.FC<ITelNumInputProps> = ({
         const digits = getOnlyDigits(inputValue);
 
         if (digits.length <= 9) {
-            setValue(digits);
-            setFormattedValue(formatPhoneNumber(digits));
-            if (onChange) {
-                onChange(digits);
-            }
+            onChange(digits);
         }
     };
 
@@ -57,24 +56,23 @@ const PhoneInput: React.FC<ITelNumInputProps> = ({
     }, [value]);
 
     return (
-        <div className={`max-w-md mx-auto ${className}`}>
+        <div className={`phone-input ${className}`}>
             {label && (
                 <label
-                    htmlFor='phone'
-                    className='block font-medium text-[#bf0059] mb-1'>
+                    htmlFor={name}
+                    className='block mb-1 font-medium text-[#bf0059]'>
                     {label}
                 </label>
             )}
             <input
                 type='text'
-                id='phone'
-                name='phone'
-                className='w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm outline-none focus:border-pink-400 transition-colors'
-                placeholder='(12)-345-67-89'
+                id={name}
+                name={name}
                 value={formattedValue}
                 onChange={handleChange}
+                className='w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm outline-none focus:border-pink-400 transition-colors'
                 required={required}
-                autoComplete='none'
+                placeholder='(77)-777-77-77'
             />
         </div>
     );

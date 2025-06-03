@@ -9,7 +9,7 @@ export const Icons = {
             viewBox='0 0 120 120'
             fill='none'
             {...props}>
-            <g clip-path='url(#clip0_305_106)'>
+            <g clipPath='url(#clip0_305_106)'>
                 <rect
                     x='5'
                     y='5'

@@ -5,11 +5,11 @@ import Modal from "@/components/ui/Modal";
 import ScrollHorizontal from "@/components/ui/ScrollHorizontal";
 import PhoneInput from "@/components/ui/TelNumberInput";
 import { Icons } from "@/icons";
-import axios from "axios";
-import { LoaderCircle } from "lucide-react";
+import api from "@/services/api";
+import { ArrowRight, LoaderCircle } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import AboutOne from "../../images/about-1.jpg";
 import AboutTwo from "../../images/about-2.jpg";
@@ -17,6 +17,11 @@ import AboutThree from "../../images/about-3.jpg";
 import AboutFour from "../../images/about-4.jpg";
 import AboutFive from "../../images/about-5.jpg";
 import FirstImage from "../../images/home-page-2.jpg";
+import AndreyDoctor from "../../images/andrey-doctor.png";
+import AndreyIgorovichDoctor from "../../images/andrey-igorovich-doctor.png";
+import DiloromDoctor from "../../images/dilorom-doctor.png";
+import MixailDoctor from "../../images/mixail-doctor.png";
+import styles from "../doctors/DoctorsSection.module.css";
 import "./About.css";
 
 interface ICardProps {
@@ -47,10 +52,56 @@ const Cards: ICardProps[] = [
     },
 ];
 
+interface IFormDataProps {
+    name: string;
+    telnum: string;
+    message: string;
+    service: string;
+}
+
+interface Doctor {
+    id: number;
+    name: string;
+    specialty: string;
+    photo: StaticImageData;
+    link: string;
+}
+
+const doctors: Doctor[] = [
+    {
+        id: 1,
+        name: "Хольнов Андрей Игоревич",
+        specialty: "Акушер-гинеколог",
+        photo: AndreyIgorovichDoctor,
+        link: "/",
+    },
+    {
+        id: 2,
+        name: "Потапов Михаил Евгеньевич",
+        specialty: "Акушер-гинеколог",
+        photo: MixailDoctor,
+        link: "/",
+    },
+    {
+        id: 3,
+        name: "Камилова Дилором Пулатовна",
+        specialty: "Акушер-гинеколог",
+        photo: DiloromDoctor,
+        link: "/",
+    },
+    {
+        id: 4,
+        name: "Дешеулин Андрей Станиславович",
+        specialty: "Акушер-гинеколог",
+        photo: AndreyDoctor,
+        link: "/",
+    },
+];
+
 const AboutPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<IFormDataProps>({
         name: "",
         telnum: "",
         message: "",
@@ -79,25 +130,29 @@ const AboutPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsFormSubmitted(true);
+
         try {
-            const response = await axios.post("/api/submit-form", formData, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                validateStatus: (status) => status >= 200 && status < 300,
-            });
+            const { message } = await api.post<
+                { message: string },
+                IFormDataProps
+            >("/submit-form", formData);
 
             setIsModalOpen(false);
             setTimeout(() => {
-                toast.success(response.data.message);
+                toast.success(message);
             }, 77);
             setFormData({ name: "", telnum: "", message: "", service: "" });
-        } catch (error) {
-            console.error("Xatolik:", error);
+        } catch (error: any) {
+            setIsModalOpen(false);
+            setFormData({ name: "", telnum: "", message: "", service: "" });
         } finally {
             setIsFormSubmitted(false);
         }
     };
+
+    useEffect(() => {
+        document.title = "О нас - Турк Бухара Эку Центр";
+    }, []);
 
     return (
         <div className='container mx-auto my-7'>
@@ -294,18 +349,101 @@ const AboutPage = () => {
                     </div>
                 ))}
             </ScrollHorizontal>
-            <div className='mt-20 bg-[#fdf6f0] p-7 rounded-2xl'>
+            <div className='mt-20 bg-[#fdf6f0] p-7 rounded-2xl flex'>
                 <div>
-                    <h1>Наша история</h1>
-                    <ul>
+                    <h1 className='text-3xl font-bold mb-2.5'>Наша история</h1>
+                    <ul className='list-disc'>
                         За время работы сети были открыты:
-                        <li>
+                        <li className='ml-5'>
                             Неотложная помощь «Turk Buxoro Eku Markazi» в Бухара
                             (работает с 2001 г.)
                         </li>
+                        <li className='ml-5'>
+                            Неотложная помощь «Turk Buxoro Eku Markazi» в
+                            Ташкент (2003-2012 гг.)
+                        </li>
+                        <li className='ml-5'>
+                            Поликлиника и дневной стационар для взрослых и детей
+                            в Бухара (2006-2012 гг.)
+                        </li>
+                        <li className='ml-5'>
+                            Филиал в Ташкент, включающий стационар, поликлинику
+                            и неотложную помощь (2008-2014 гг.)
+                        </li>
+                        <li className='ml-5'>
+                            Медицинский Центр «Turk Buxoro Eku Markazi» для
+                            взрослых в Бухара (работает с 2003 г.)
+                        </li>
+                        <li className='ml-5'>
+                            Стационар для взрослых в Бухара (работает с 2004 г.)
+                        </li>
+                        <li className='ml-5'>
+                            Стационар и неотложная помощь для детей в Бухара
+                            (2005-2009 гг.)
+                        </li>
+                        <li className='ml-5'>
+                            Медицинский Центр «Turk Buxoro Eku Markazi» для всей
+                            семьи на ул. Татарская (работает с 2007 г.)
+                        </li>
                     </ul>
                 </div>
+                <div className='ml-auto p-5 bg-white rounded-2xl shadow-xl'>
+                    <div>
+                        <Icons.secondIcon />
+                    </div>
+                    <h1 className='text-3xl font-bold mt-5 mb-2.5'>
+                        Наша миссия
+                    </h1>
+                    <p className='max-w-[333px]'>
+                        Наша миссия проста и понятна — мы работаем, чтобы в
+                        каждой семье, желающей стать родителями родился здоровый
+                        ребенок. У нас вы найдете современные и комфортные
+                        условия, безопасное передовое оборудование и
+                        индивидуальный подход к каждому пациенту.
+                    </p>
+                </div>
             </div>
+            <section className='relative mt-10 mb-10'>
+                <div className='flex items-center justify-between'>
+                    <h2 className='text-3xl font-bold'>Врачи</h2>
+                    <Link
+                        href='/doctors'
+                        className='group flex items-center no-underline! hover:text-[var(--primary-color)]'
+                        aria-label='Все врачи'>
+                        Все врачи
+                        <ArrowRight
+                            className='transition-transform duration-100 ease-in-out inline group-hover:translate-x-1 ml-1'
+                            size={18}
+                        />
+                    </Link>
+                </div>
+
+                <div className={styles.sliderWrapper}>
+                    <div className={styles.slider}>
+                        <ScrollHorizontal>
+                            {doctors.map((doc, i) => (
+                                <Link
+                                    href={`/doctors/${doc.link}`}
+                                    key={`${doc.id}-${i}`}
+                                    className={styles.card}>
+                                    <div className={styles.photo}>
+                                        <img
+                                            src={doc.photo.src}
+                                            alt={doc.name}
+                                            width={200}
+                                            height={200}
+                                        />
+                                    </div>
+                                    <span className={styles.spec}>
+                                        {doc.specialty}
+                                    </span>
+                                    <h3 className={styles.name}>{doc.name}</h3>
+                                </Link>
+                            ))}
+                        </ScrollHorizontal>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

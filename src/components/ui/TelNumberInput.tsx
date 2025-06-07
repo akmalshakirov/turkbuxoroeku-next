@@ -9,6 +9,7 @@ interface ITelNumInputProps {
     label?: string;
     required?: boolean;
     name?: string;
+    placeholder?: string;
 }
 
 const PhoneInput: React.FC<ITelNumInputProps> = ({
@@ -18,6 +19,7 @@ const PhoneInput: React.FC<ITelNumInputProps> = ({
     label = "",
     required = false,
     name = "",
+    placeholder = "",
 }) => {
     const [formattedValue, setFormattedValue] = useState<string>("");
 
@@ -72,7 +74,7 @@ const PhoneInput: React.FC<ITelNumInputProps> = ({
                 onChange={handleChange}
                 className='w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm outline-none focus:border-pink-400 transition-colors'
                 required={required}
-                placeholder='(77)-777-77-77'
+                placeholder={placeholder ? placeholder : "(77)-777-77-77"}
             />
         </div>
     );

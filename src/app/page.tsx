@@ -3,7 +3,7 @@ import SlidingImages from "@/components/ui/SlidingImages";
 import TotalInfoCards from "@/components/ui/TotalInfoCards";
 import AboutSection from "./about/AboutSection";
 import "./app.css";
-import DoctorsPage from "./doctors/DoctorsSection";
+import DoctorsSection from "./doctors/DoctorsSection";
 import NewsSection from "./news/NewsSection";
 import ReviewsSection from "./reviews/ReviewsSection";
 import ServicesSection from "./services/ServicesSection";
@@ -19,7 +19,7 @@ const Home = () => {
             </div>
             <ServicesSection />
             <AboutSection />
-            <DoctorsPage />
+            <DoctorsSection />
             <ReviewsSection />
             <NewsSection />
         </div>

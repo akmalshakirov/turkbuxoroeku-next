@@ -1,9 +1,9 @@
 .newsSection {
-    padding: 20px;
+    padding: 40px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 70px;
+    margin-top: 10px;
     margin-bottom: 40px;
 }
 
@@ -25,8 +25,8 @@
     flex: 0 0 300px;
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    border: 1px solid #e5e7eb;
     margin-inline: 10px;
     text-decoration: none !important;
 }

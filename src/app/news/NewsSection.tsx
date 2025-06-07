@@ -1,10 +1,10 @@
+import ScrollHorizontal from "@/components/ui/ScrollHorizontal";
 import { ArrowRight, CalendarDays, Eye } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import styles from "./NewsSection.module.css";
 import NewsKlinika from "../../images/news-klinika.jpg";
 import NewsLeksiya from "../../images/news-leksiya.jpg";
-import ScrollHorizontal from "@/components/ui/ScrollHorizontal";
+import styles from "./NewsSection.module.css";
 
 interface INewsProps {
     id: number;

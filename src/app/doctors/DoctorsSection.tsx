@@ -55,8 +55,8 @@ export default function DoctorsSection() {
                 <Link
                     href='/doctors'
                     className='group flex items-center no-underline! hover:text-[var(--primary-color)]'
-                    aria-label='Все услуги'>
-                    Все услуги
+                    aria-label='Все врачи'>
+                    Все врачи
                     <ArrowRight
                         className='transition-transform duration-100 ease-in-out inline group-hover:translate-x-1 ml-1'
                         size={18}

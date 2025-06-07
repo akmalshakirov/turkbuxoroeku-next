@@ -90,6 +90,7 @@ const Footer = () => {
                     target='_blank'
                     rel='noopener noreferrer'
                     title='Limon Group'>
+                    <i className='fa-solid fa-lemon mr-2'></i>
                     Limon.group
                 </AnimatedLink>
             </div>

@@ -1,4 +1,6 @@
 "use client";
+import api from "@/services/api";
+import { LoaderCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,12 +17,16 @@ import Button from "../ui/Button";
 import Modal from "../ui/Modal";
 import PhoneInput from "../ui/TelNumberInput";
 import "./Header.css";
-import { toast } from "react-toastify";
-import axios from "axios";
-import { LoaderCircle } from "lucide-react";
 
 interface IHeaderActive {
     isActive: boolean;
+}
+
+interface IFormDataProps {
+    name: string;
+    telnum: string;
+    message: string;
+    service: string;
 }
 
 const Header = ({ isActive = false }: IHeaderActive) => {
@@ -29,7 +35,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const dropdownRef = useRef<HTMLButtonElement>(null);
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<IFormDataProps>({
         name: "",
         telnum: "",
         message: "",
@@ -76,25 +82,40 @@ const Header = ({ isActive = false }: IHeaderActive) => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsFormSubmitted(true);
+
         try {
-            const response = await axios.post("/api/submit-form", formData, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                validateStatus: (status) => status >= 200 && status < 300,
-            });
+            const { message } = await api.post<
+                { message: string },
+                IFormDataProps
+            >("/submit-form", formData);
 
             setIsModalOpen(false);
-            setTimeout(() => {
-                toast.success(response.data.message);
-            }, 77);
             setFormData({ name: "", telnum: "", message: "", service: "" });
-        } catch (error) {
-            console.error("Xatolik:", error);
+        } catch (error: any) {
+            setIsModalOpen(false);
+            setFormData({ name: "", telnum: "", message: "", service: "" });
         } finally {
             setIsFormSubmitted(false);
         }
     };
+    // try {
+    //     const response = await axios.post("/api/submit-form", formData, {
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         validateStatus: (status) => status >= 200 && status < 300,
+    //     });
+
+    //     setIsModalOpen(false);
+    //     setTimeout(() => {
+    //         toast.success(response.data.message);
+    //     }, 77);
+    //     setFormData({ name: "", telnum: "", message: "", service: "" });
+    // } catch (error) {
+    //     console.error("Xatolik:", error);
+    // } finally {
+    //     setIsFormSubmitted(false);
+    // }
 
     const openModal = () => {
         setIsModalOpen(true);

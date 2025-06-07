@@ -6,7 +6,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
         if (!name || !telnum || !message || !service) {
             return res.status(400).json({
-                error: "Barcha maydonlar to'ldirilishi shart!",
+                error: "Все поля должны быть заполнены!",
             });
         }
 
@@ -18,11 +18,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         });
 
         return res.status(200).json({
-            message: "Ma'lumotlar muvaffaqiyatli yuborildi!",
+            message: "Данные успешно отправлены",
         });
     } else {
         return res
             .status(405)
-            .json({ message: "Faqat POST so'rovlari qabul qilinadi" });
+            .json({ message: "Принимаются только POST-запросы!" });
     }
 }

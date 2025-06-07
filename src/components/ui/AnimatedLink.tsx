@@ -37,9 +37,9 @@ const AnimatedLink = ({
             title={title}
             ref={linkRef}
             onMouseMove={handleMouseMove}
-            className={`relative inline-block px-4 py-2 font-semibold text-white transition-all duration-500 rounded-lg group overflow-hidden no-underline! ${className}`}>
+            className={`relative inline-block px-4 py-2 font-semibold text-white transition-all duration-500 rounded-lg group no-underline! ${className}`}>
             <span
-                className='absolute inset-0 w-full h-full bg-gradient-to-r from-amber-600 via-orange-400/70 to-yellow-500/70 transform scale-y-0 scale-x-0 group-hover:scale-y-100 group-hover:scale-x-100 rounded-full transition-transform duration-300'
+                className='absolute inset-0 w-full h-full bg-gradient-to-r from-amber-600 via-orange-400/70 to-yellow-500/70 transform scale-y-0 scale-x-0 group-hover:scale-y-100 group-hover:scale-x-100 rounded-full transition-transform duration-300 group-hover:shadow-2xl shadow-yellow-200'
                 style={{
                     transformOrigin: "var(--tw-hover-origin)",
                 }}></span>

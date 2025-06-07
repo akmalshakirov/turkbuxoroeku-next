@@ -12,9 +12,11 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
             <ToastContainer
                 autoClose={5000}
                 limit={4}
-                newestOnTop
+                newestOnTop={true}
+                hideProgressBar
                 position='top-right'
                 draggable
+                theme='colored'
             />
             <Header isActive={false} />
             <main className={`${pathname !== "/" && "pt-[93px]"}`}>

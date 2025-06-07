@@ -38,7 +38,6 @@ const Header = ({ isActive = false }: IHeaderActive) => {
     const location = usePathname();
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
-    // handleInputChange funksiyasi
     const handleInputChange = (
         e: React.ChangeEvent<
             HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -51,11 +50,10 @@ const Header = ({ isActive = false }: IHeaderActive) => {
         }));
     };
 
-    // PhoneInput uchun maxsus handler
     const handlePhoneChange = (value: string) => {
         setFormData((prev) => ({
             ...prev,
-            telnum: value, // Telefon raqamini formData ichiga saqlash
+            telnum: value,
         }));
     };
 
@@ -83,16 +81,13 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                validateStatus: (status) => status >= 200 && status < 300,
             });
 
-            if (response.status !== 200) {
-                toast.error("Ma'lumotni yuborishda xatolik yuz berdi");
-                return;
-            }
-
-            toast.success(response.data.message);
-
-            // setIsModalOpen(false);
+            setIsModalOpen(false);
+            setTimeout(() => {
+                toast.success(response.data.message);
+            }, 77);
             setFormData({ name: "", telnum: "", message: "", service: "" });
         } catch (error) {
             console.error("Xatolik:", error);
@@ -212,7 +207,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                             title='Записаться'>
                             <form onSubmit={handleSubmit}>
                                 {isFormSubmitted ? (
-                                    <div className='flex items-center gap-2 w-[40.41vw] h-[24.305vw] justify-center text-4xl text-[var(--primary-color)]'>
+                                    <div className='flex items-center gap-2 h-[24.305vw] 2xl:h-[17.292vw] justify-center text-4xl text-[var(--primary-color)]'>
                                         Отправляется
                                         <LoaderCircle
                                             className='animate-spin'

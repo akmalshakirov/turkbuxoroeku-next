@@ -9,7 +9,10 @@ function NotFoundPage() {
                 К сожалению, страница, которую вы ищете, не найдена.
             </p>
             <Link href='/'>
-                <Button className='text-white' name='to home'>
+                <Button
+                    className='text-white'
+                    name='to home'
+                    aria-label='to home'>
                     Вернуться на главную
                 </Button>
             </Link>

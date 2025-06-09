@@ -49,7 +49,8 @@ const doctors: Doctor[] = [
 
 export default function DoctorsSection() {
     return (
-        <section className='relative mt-10 mb-10'>
+        <section
+            className={`relative mt-10 mb-10 ${styles["doctors-section"]}`}>
             <div className='flex items-center justify-between'>
                 <h2 className='text-3xl font-bold'>Врачи</h2>
                 <Link

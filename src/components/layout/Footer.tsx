@@ -1,3 +1,4 @@
+"use client";
 import { Facebook, Instagram, Send, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,22 +26,22 @@ const Footer = () => {
                         <Link
                             href='/'
                             className='hover:bg-[var(--primary-color)] border rounded-full bg-pink-500 text-xl p-2'>
-                            <Instagram size={20} />
+                            <Instagram size={20} aria-label='Social media...' />
                         </Link>
                         <Link
                             href='/'
                             className='hover:bg-[var(--primary-color)] transition border rounded-full bg-pink-500 text-xl p-2'>
-                            <Send size={20} />
+                            <Send size={20} aria-label='Social media...' />
                         </Link>
                         <Link
                             href='/'
                             className='hover:bg-[var(--primary-color)] transition border rounded-full bg-pink-500 text-xl p-2'>
-                            <Facebook size={20} />
+                            <Facebook size={20} aria-label='Social media...' />
                         </Link>
                         <Link
                             href='/'
                             className='hover:bg-[var(--primary-color)] transition border rounded-full bg-pink-500 text-xl p-2'>
-                            <Youtube size={20} />
+                            <Youtube size={20} aria-label='Social media...' />
                         </Link>
                     </div>
                 </div>
@@ -62,22 +63,34 @@ const Footer = () => {
                     </h4>
                     <ul className='space-y-2'>
                         <li>
-                            <Link href='/'>Процедуры и процессы</Link>
+                            <Link href='/' aria-label='Процедуры и процессы'>
+                                Процедуры и процессы
+                            </Link>
                         </li>
                         <li>
-                            <Link href='/'>Ресурсы и поддержка</Link>
+                            <Link href='/' aria-label='Ресурсы и поддержка'>
+                                Ресурсы и поддержка
+                            </Link>
                         </li>
                         <li>
-                            <Link href='/contacts'>Контакты</Link>
+                            <Link href='/contacts' aria-label='Контакты'>
+                                Контакты
+                            </Link>
                         </li>
                         <li>
-                            <Link href='/services'>Услуги</Link>
+                            <Link href='/services' aria-label='Услуги'>
+                                Услуги
+                            </Link>
                         </li>
                         <li>
-                            <Link href='/'>Успешные истории</Link>
+                            <Link href='/' aria-label='Успешные истории'>
+                                Успешные истории
+                            </Link>
                         </li>
                         <li>
-                            <Link href='/news'>Новости и блог</Link>
+                            <Link href='/news' aria-label='Новости и блог'>
+                                Новости и блог
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -90,7 +103,6 @@ const Footer = () => {
                     target='_blank'
                     rel='noopener noreferrer'
                     title='Limon Group'>
-                    <i className='fa-solid fa-lemon mr-2'></i>
                     Limon.group
                 </AnimatedLink>
             </div>

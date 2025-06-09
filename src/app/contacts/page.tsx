@@ -217,7 +217,7 @@ const ContactsPage = () => {
                     </div>
                     <div className='text-white max-w-max'>
                         <Button
-                            aria-label="it's button"
+                            aria-label='Отправить'
                             name='button'
                             type='submit'
                             variant='primary'

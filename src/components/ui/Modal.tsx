@@ -16,14 +16,14 @@ const Modal = ({ isOpen, onClose, title, children }: IModalProps) => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const handleEsc = (e: KeyboardEvent) => {
-            if (e.key === "Escape") handleClose();
-        };
+        // const handleEsc = (e: KeyboardEvent) => {
+        //     if (e.key === "Escape") handleClose();
+        // };
 
         if (isOpen) {
             setIsAnimating(true);
             setIsVisible(true);
-            document.addEventListener("keydown", handleEsc);
+            // document.addEventListener("keydown", handleEsc);
             document.body.style.overflow = "hidden";
         } else if (isVisible) {
             setIsAnimating(false);
@@ -35,18 +35,18 @@ const Modal = ({ isOpen, onClose, title, children }: IModalProps) => {
         }
 
         return () => {
-            document.removeEventListener("keydown", handleEsc);
+            //     document.removeEventListener("keydown", handleEsc);
             document.body.style.overflow = "auto";
         };
     }, [isOpen]);
 
-    const handleClose = () => {
-        setIsAnimating(false);
+    // const handleClose = () => {
+    //     setIsAnimating(false);
 
-        setTimeout(() => {
-            onClose();
-        }, 300);
-    };
+    //     setTimeout(() => {
+    //         onClose();
+    //     }, 300);
+    // };
 
     if (!isVisible && !isOpen) return null;
 
@@ -67,10 +67,10 @@ const Modal = ({ isOpen, onClose, title, children }: IModalProps) => {
                 <div className='flex justify-between items-center mb-4'>
                     <h3 className='text-xl font-semibold'>{title}</h3>
                     <button
-                        name='button'
+                        name='close button'
                         onClick={onClose}
                         className='text-gray-500 rounded hover:bg-gray-300 transition-colors group'
-                        aria-label='Yopish'>
+                        aria-label='Zakrit'>
                         <svg
                             className='w-6 h-6 group-hover:rotate-90 ease-in-out transition-transform'
                             fill='currentColor'

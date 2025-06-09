@@ -73,7 +73,12 @@ const NewsPage = () => {
                                 className='border border-gray-400 p-2 pl-8 mx-1.5 rounded-xl outline-none w-full'
                             />
                         </div>
-                        <Button className='text-white px-10!'>Поиск</Button>
+                        <Button
+                            className='text-white px-10!'
+                            name='Поиск'
+                            aria-label='Поиск'>
+                            Поиск
+                        </Button>
                     </div>
                     <div className={styles.header}>
                         <h2 className='text-3xl font-bold'>Новости</h2>

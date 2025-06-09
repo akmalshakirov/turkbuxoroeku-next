@@ -215,7 +215,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                     </a>
                     <div className='flex items-center gap-3.5'>
                         <Button
-                            aria-label="it's button"
+                            aria-label='Записаться'
                             name='button'
                             variant='primary'
                             size='md'
@@ -334,7 +334,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
 
                                         <div className='text-white max-w-max'>
                                             <Button
-                                                aria-label="it's button"
+                                                aria-label='Отправить'
                                                 name='button'
                                                 type='submit'
                                                 variant='primary'
@@ -355,7 +355,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                             }`}
                             type='button'
                             name='button'
-                            aria-label="it's button"
+                            aria-label='dropdown is here'
                             onClick={() => setLangActive(!langActive)}>
                             <ul>
                                 <li>
@@ -419,7 +419,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
                             Контакты
                         </Link>
                         <button
-                            aria-label="it's button"
+                            aria-label='burger menu'
                             name='button'
                             className={`burger-menu ${
                                 headerActive

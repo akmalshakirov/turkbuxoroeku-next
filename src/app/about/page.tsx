@@ -16,10 +16,10 @@ import AboutTwo from "../../images/about-2.jpg";
 import AboutThree from "../../images/about-3.jpg";
 import AboutFour from "../../images/about-4.jpg";
 import AboutFive from "../../images/about-5.jpg";
-import FirstImage from "../../images/home-page-2.jpg";
 import AndreyDoctor from "../../images/andrey-doctor.png";
 import AndreyIgorovichDoctor from "../../images/andrey-igorovich-doctor.png";
 import DiloromDoctor from "../../images/dilorom-doctor.png";
+import FirstImage from "../../images/home-page-2.jpg";
 import MixailDoctor from "../../images/mixail-doctor.png";
 import styles from "../doctors/DoctorsSection.module.css";
 import "./About.css";
@@ -155,7 +155,7 @@ const AboutPage = () => {
     }, []);
 
     return (
-        <div className='container mx-auto my-7'>
+        <div className='container mx-auto my-7 about'>
             {/* breadcrumbs ABOUT PAGE */}
             <div className='flex items-center gap-2 text-gray-500 mb-4'>
                 <Link href='/'>Главная страница</Link>
@@ -190,7 +190,9 @@ const AboutPage = () => {
                         <Button
                             title='Оставить заявку'
                             className='text-white'
-                            onClick={() => setIsModalOpen(true)}>
+                            onClick={() => setIsModalOpen(true)}
+                            name='Оставить заявку'
+                            aria-label=' Оставить заявку'>
                             Оставить заявку
                         </Button>
                     </div>
@@ -305,7 +307,7 @@ const AboutPage = () => {
 
                                 <div className='text-white max-w-max'>
                                     <Button
-                                        aria-label="it's button"
+                                        aria-label='Отправить'
                                         name='button'
                                         type='submit'
                                         variant='primary'
@@ -343,7 +345,7 @@ const AboutPage = () => {
                             alt={`Card ${card.id}`}
                             width={300}
                             height={300}
-                            className='shadow-md rounded-[20px]'
+                            className='shadow-md rounded-[20px] min-w-[325px] object-cover'
                             draggable={false}
                         />
                     </div>
@@ -354,34 +356,57 @@ const AboutPage = () => {
                     <h1 className='text-3xl font-bold mb-2.5'>Наша история</h1>
                     <ul className='list-disc'>
                         За время работы сети были открыты:
-                        <li className='ml-5'>
+                        <li
+                            className='ml-5'
+                            aria-label='Неотложная помощь «Turk Buxoro Eku Markazi» в Бухара
+                            (работает с 2001 г.)'>
                             Неотложная помощь «Turk Buxoro Eku Markazi» в Бухара
                             (работает с 2001 г.)
                         </li>
-                        <li className='ml-5'>
+                        <li
+                            className='ml-5'
+                            aria-label='Неотложная помощь «Turk Buxoro Eku Markazi» в
+                            Ташкент (2003-2012 гг.)'>
                             Неотложная помощь «Turk Buxoro Eku Markazi» в
                             Ташкент (2003-2012 гг.)
                         </li>
-                        <li className='ml-5'>
+                        <li
+                            className='ml-5'
+                            aria-label='Поликлиника и дневной стационар для взрослых и детей
+                            в Бухара (2006-2012 гг.)'>
                             Поликлиника и дневной стационар для взрослых и детей
                             в Бухара (2006-2012 гг.)
                         </li>
-                        <li className='ml-5'>
+                        <li
+                            className='ml-5'
+                            aria-label='Филиал в Ташкент, включающий стационар, поликлинику
+                            и неотложную помощь (2008-2014 гг.)'>
                             Филиал в Ташкент, включающий стационар, поликлинику
                             и неотложную помощь (2008-2014 гг.)
                         </li>
-                        <li className='ml-5'>
+                        <li
+                            className='ml-5'
+                            aria-label='Медицинский Центр «Turk Buxoro Eku Markazi» для
+                            взрослых в Бухара (работает с 2003 г.)'>
                             Медицинский Центр «Turk Buxoro Eku Markazi» для
                             взрослых в Бухара (работает с 2003 г.)
                         </li>
-                        <li className='ml-5'>
+                        <li
+                            className='ml-5'
+                            aria-label='Стационар для взрослых в Бухара (работает с 2004 г.)'>
                             Стационар для взрослых в Бухара (работает с 2004 г.)
                         </li>
-                        <li className='ml-5'>
+                        <li
+                            className='ml-5'
+                            aria-label='Стационар и неотложная помощь для детей в Бухара
+                            (2005-2009 гг.)'>
                             Стационар и неотложная помощь для детей в Бухара
                             (2005-2009 гг.)
                         </li>
-                        <li className='ml-5'>
+                        <li
+                            className='ml-5'
+                            aria-label='Медицинский Центр «Turk Buxoro Eku Markazi» для всей
+                            семьи на ул. Татарская (работает с 2007 г.)'>
                             Медицинский Центр «Turk Buxoro Eku Markazi» для всей
                             семьи на ул. Татарская (работает с 2007 г.)
                         </li>
@@ -427,7 +452,7 @@ const AboutPage = () => {
                                     key={`${doc.id}-${i}`}
                                     className={styles.card}>
                                     <div className={styles.photo}>
-                                        <img
+                                        <Image
                                             src={doc.photo.src}
                                             alt={doc.name}
                                             width={200}

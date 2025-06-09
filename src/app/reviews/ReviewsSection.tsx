@@ -112,14 +112,18 @@ const ReviewsSection = () => {
                                 className={`${styles.tabButton} ${
                                     activeTab === "video" ? styles.active : ""
                                 }`}
-                                onClick={() => handleTabChange("video")}>
+                                onClick={() => handleTabChange("video")}
+                                name='Видео-интервью с пациентами'
+                                aria-label='Видео-интервью с пациентами'>
                                 Видео-интервью с пациентами
                             </button>
                             <button
                                 className={`${styles.tabButton} ${
                                     activeTab === "text" ? styles.active : ""
                                 }`}
-                                onClick={() => handleTabChange("text")}>
+                                onClick={() => handleTabChange("text")}
+                                name='Отзывы пациентов'
+                                aria-label='Отзывы пациентов'>
                                 Отзывы пациентов
                             </button>
                         </div>
@@ -147,7 +151,10 @@ const ReviewsSection = () => {
                                               width={300}
                                               height={200}
                                           />
-                                          <button className={styles.playButton}>
+                                          <button
+                                              className={styles.playButton}
+                                              name='Play icon button...'
+                                              aria-label='Play icon button...'>
                                               <PlayIcon
                                                   size={45}
                                                   className='p-2'

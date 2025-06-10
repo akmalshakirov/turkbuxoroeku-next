@@ -30,10 +30,10 @@ interface IFormDataProps {
 }
 
 const Header = ({ isActive = false }: IHeaderActive) => {
-    const [headerActive, setHeaderActive] = useState(false);
-    const [langActive, setLangActive] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const [headerActive, setHeaderActive] = useState<boolean>(false);
+    const [langActive, setLangActive] = useState<boolean>(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [scrolled, setScrolled] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLButtonElement>(null);
     const [formData, setFormData] = useState<IFormDataProps>({
         name: "",
@@ -42,7 +42,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
         service: "",
     });
     const location = usePathname();
-    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+    const [isFormSubmitted, setIsFormSubmitted] = useState<boolean>(false);
 
     const handleInputChange = (
         e: React.ChangeEvent<

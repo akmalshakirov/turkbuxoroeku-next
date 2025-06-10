@@ -10,13 +10,9 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayoutd({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang='en'>
+        <html lang='ru'>
             <meta name='description' content='Турк Бухара Эку Центр' />
             <body className={`antialiased`}>
                 <ClientLayout>{children}</ClientLayout>
@@ -24,3 +20,5 @@ export default function RootLayoutd({
         </html>
     );
 }
+
+export default RootLayout;

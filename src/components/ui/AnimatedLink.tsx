@@ -44,7 +44,7 @@ const AnimatedLink = ({
                     transformOrigin: "var(--tw-hover-origin)",
                 }}></span>
 
-            <span className='relative transition-colors duration-300'>
+            <span className='relative transition-colors duration-300 text-[#fcf259] group-hover:text-white'>
                 {children}
             </span>
         </Link>

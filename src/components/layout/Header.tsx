@@ -150,6 +150,12 @@ const Header = ({ isActive = false }: IHeaderActive) => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (headerActive) {
+            setHeaderActive(false);
+        }
+    }, [location]);
+
     return (
         <>
             <header

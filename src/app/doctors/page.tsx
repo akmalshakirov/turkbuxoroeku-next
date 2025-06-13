@@ -54,10 +54,10 @@ const DoctorsPage = () => {
                 <p>Докторы</p>
             </div>
             <div className='flex items-center p-4'>
-                {doctors.map((doc, i) => (
+                {doctors.map((doc) => (
                     <Link
-                        href={doc.link}
-                        key={i}
+                        href={`/doctors/${doc.id}`}
+                        key={doc.id}
                         className={styles.doctorsCard}>
                         <div className={styles.photo}>
                             <img

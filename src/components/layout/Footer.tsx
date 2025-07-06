@@ -3,11 +3,12 @@ import { Facebook, Instagram, Send, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedLink from "../ui/AnimatedLink";
+import styles from "./Footer.module.css";
 
 const Footer = () => {
     return (
-        <footer className='bg-[#cb4081] text-white py-8'>
-            <div className='flex gap-[4.392vw] justify-center'>
+        <footer className={styles.footer}>
+            <div className={styles["footer-content"]}>
                 <div className='mb-6 md:mb-0'>
                     <Image
                         src='/icon.svg'

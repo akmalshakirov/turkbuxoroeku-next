@@ -20,28 +20,28 @@ const doctors: Doctor[] = [
         name: "Хольнов Андрей Игоревич",
         specialty: "Акушер-гинеколог",
         photo: AndreyIgorovichDoctor,
-        link: "/",
+        link: "/1",
     },
     {
         id: 2,
         name: "Потапов Михаил Евгеньевич",
         specialty: "Акушер-гинеколог",
         photo: MixailDoctor,
-        link: "/",
+        link: "/2",
     },
     {
         id: 3,
         name: "Камилова Дилором Пулатовна",
         specialty: "Акушер-гинеколог",
         photo: DiloromDoctor,
-        link: "/",
+        link: "/3",
     },
     {
         id: 4,
         name: "Дешеулин Андрей Станиславович",
         specialty: "Акушер-гинеколог",
         photo: AndreyDoctor,
-        link: "/",
+        link: "/4",
     },
 ];
 
@@ -56,7 +56,7 @@ const DoctorsPage = () => {
             <div className='flex items-center p-4'>
                 {doctors.map((doc) => (
                     <Link
-                        href={`/doctors/${doc.id}`}
+                        href={`/doctors${doc.link}`}
                         key={doc.id}
                         className={styles.doctorsCard}>
                         <div className={styles.photo}>

@@ -11,7 +11,7 @@ class ApiService {
 
     constructor() {
         this.instance = axios.create({
-            baseURL: "/api",
+            baseURL: "https://turkbuxoroeku-js.onrender.com/api",
             headers: { "Content-Type": "application/json" },
             timeout: 15000,
             validateStatus: (status) => status >= 200 && status < 300,

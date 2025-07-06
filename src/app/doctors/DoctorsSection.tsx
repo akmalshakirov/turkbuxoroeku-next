@@ -22,28 +22,28 @@ const doctors: Doctor[] = [
         name: "Хольнов Андрей Игоревич",
         specialty: "Акушер-гинеколог",
         photo: AndreyIgorovichDoctor,
-        link: "/",
+        link: "1",
     },
     {
         id: 2,
         name: "Потапов Михаил Евгеньевич",
         specialty: "Акушер-гинеколог",
         photo: MixailDoctor,
-        link: "/",
+        link: "2",
     },
     {
         id: 3,
         name: "Камилова Дилором Пулатовна",
         specialty: "Акушер-гинеколог",
         photo: DiloromDoctor,
-        link: "/",
+        link: "3",
     },
     {
         id: 4,
         name: "Дешеулин Андрей Станиславович",
         specialty: "Акушер-гинеколог",
         photo: AndreyDoctor,
-        link: "/",
+        link: "4",
     },
 ];
 

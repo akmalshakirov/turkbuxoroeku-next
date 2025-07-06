@@ -87,7 +87,7 @@ const Header = ({ isActive = false }: IHeaderActive) => {
             const { message } = await api.post<
                 { message: string },
                 IFormDataProps
-            >("/submit-form", formData);
+            >("/clients", formData);
 
             setIsModalOpen(false);
             setFormData({ name: "", telnum: "", message: "", service: "" });
